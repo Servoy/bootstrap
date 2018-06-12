@@ -6,7 +6,7 @@ angular.module('ui.bootstrap.tabs', [])
   ctrl.tabs = [];
 
   ctrl.select = function(index, evt) {
-	var previousIndex = -1;
+	var previousIndex;
     if (!destroyed) {
       previousIndex = findTabIndex(oldIndex);
       var previousSelected = ctrl.tabs[previousIndex];

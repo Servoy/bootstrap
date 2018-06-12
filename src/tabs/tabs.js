@@ -6,8 +6,9 @@ angular.module('ui.bootstrap.tabs', [])
   ctrl.tabs = [];
 
   ctrl.select = function(index, evt) {
+	var previousIndex = -1;
     if (!destroyed) {
-      var previousIndex = findTabIndex(oldIndex);
+      previousIndex = findTabIndex(oldIndex);
       var previousSelected = ctrl.tabs[previousIndex];
       if (previousSelected) {
         previousSelected.tab.onDeselect({
@@ -23,7 +24,8 @@ angular.module('ui.bootstrap.tabs', [])
       var selected = ctrl.tabs[index];
       if (selected) {
         selected.tab.onSelect({
-          $event: evt
+          $event: evt,
+          previousIndex: previousIndex
         });
         selected.tab.active = true;
         ctrl.active = selected.index;
